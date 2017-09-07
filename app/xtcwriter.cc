@@ -1,14 +1,14 @@
-#include "pdsdata/xtc/Descriptor.hh"
-#include "pdsdata/xtc/Dgram.hh"
-#include "pdsdata/xtc/TypeId.hh"
-#include "pdsdata/xtc/XtcIterator.hh"
+#include "xtcdata/xtc/Descriptor.hh"
+#include "xtcdata/xtc/Dgram.hh"
+#include "xtcdata/xtc/TypeId.hh"
+#include "xtcdata/xtc/XtcIterator.hh"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
 #include <unistd.h>
 
-using namespace Pds;
+using namespace XtcData;
 #define BUFSIZE 0x4000000
 #define NDGRAM 1
 
@@ -67,7 +67,6 @@ void fexExample(Xtc* parent)
 {
   // make a child xtc with detector data and descriptor
   TypeId tid_child(TypeId::DescData, 0);
-  printf("*** %p %p %p\n",parent,parent->next(),parent->payload());
   Xtc& xtcChild = *new(parent) Xtc(tid_child);
 
   DescData& descdata = *new(xtcChild.payload()) DescData();
